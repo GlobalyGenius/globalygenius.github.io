@@ -1,1 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Globaly Genius</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #000100;
+            color: #e0e0e0;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 8px;
+            color: #e0e0e0;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #858585;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            font-size: 18px;
+            color: #b0b0b0;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #e0e0e0;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .project {
+            background: #0a0a0a;
+            border: 1px solid #222;
+            padding: 24px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .project-icon {
+            font-size: 20px;
+        }
+
+        .project-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #e0e0e0;
+        }
+
+        .project-description {
+            color: #b0b0b0;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .link {
+            color: #569cd6;
+            text-decoration: none;
+            font-size: 14px;
+            transition: opacity 0.2s;
+        }
+
+        .link:hover {
+            opacity: 0.8;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill {
+            background: #1a1a1a;
+            color: #b0b0b0;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            border: 1px solid #333;
+        }
+
+        .contact {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 16px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 80px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 16px;
+            }
+            
+            .logo {
+                font-size: 40px;
+            }
+            
+            .project-links {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">🦄</div>
+        <h1>Globaly Genius</h1>
+        <div class="subtitle">Belarusian AI-enthusiast</div>
+        <div class="description">
+            Building things with code and exploring artificial intelligence.
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Projects</div>
+        
+        <div class="project">
+            <div class="project-header">
+                <div class="project-icon">🦄</div>
+                <div class="project-title">Text Editor</div>
+            </div>
+            <div class="project-description">
+                A lightweight web-based text and code editor with syntax highlighting and mobile support.
+            </div>
+            <div class="project-links">
+                <a href="https://globalygenius.github.io/Text-Editor" target="_blank" class="link">Live Demo</a>
+                <a href="https://github.com/GlobalyGenius/Text-Editor" target="_blank" class="link">GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Skills</div>
+        <div class="skills">
+            <div class="skill">Python</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">Machine Learning</div>
+            <div class="skill">AI</div>
+            <div class="skill">Web Development</div>
+            <div class="skill">React</div>
+            <div class="skill">Node.js</div>
+        </div>
+    </div>
+
+    <div class="contact">
+        <div class="section-title">Contact</div>
+        <div class="contact-links">
+            <a href="https://github.com/GlobalyGenius" target="_blank" class="link">GitHub</a>
+            <a href="mailto:globalygenius@example.com" class="link">Email</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2025 Globaly Genius
+    </div>
+</body>
+</html>
