@@ -23,7 +23,7 @@
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦄</text></svg>">
     
-    <!-- Font preloading -->
+    <!-- Preload critical resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -97,12 +97,6 @@
             color: var(--light);
             line-height: 1.7;
             overflow-x: hidden;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        body.loaded {
-            opacity: 1;
         }
 
         .container {
@@ -367,6 +361,26 @@
             margin-bottom: 3rem;
             max-width: 600px;
             line-height: 1.6;
+            min-height: 120px;
+        }
+
+        .typewriter-text {
+            display: inline;
+        }
+
+        .typewriter-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.2em;
+            background-color: var(--secondary);
+            margin-left: 2px;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
         }
 
         .hero-buttons {
@@ -846,14 +860,16 @@
             text-align: center;
         }
 
-        /* Light Theme */
+        /* Light Theme - FIXED */
         body.theme-light {
             --dark: #f8f9fa;
             --darker: #e9ecef;
             --light: #000100;
-            --light-gray: #495057;
+            --light-gray: #dee2e6;
             --gray: #6c757d;
             --dark-gray: #343a40;
+            background: var(--dark);
+            color: var(--light);
         }
 
         body.theme-light header {
@@ -905,23 +921,80 @@
         body.theme-light .theme-toggle {
             background: rgba(0, 0, 0, 0.1);
             border-color: rgba(0, 0, 0, 0.2);
+            color: var(--light);
         }
 
         body.theme-light .language-dropdown {
             background: var(--dark);
+            color: var(--light);
         }
 
         body.theme-light footer {
             background: rgba(233, 236, 239, 0.5);
+            color: var(--light);
         }
 
         body.theme-light .social-link {
             background: rgba(0, 0, 0, 0.1);
             border-color: rgba(0, 0, 0, 0.2);
+            color: var(--light);
         }
 
         body.theme-light .social-link:hover {
             background: var(--primary);
+            color: white;
+        }
+
+        body.theme-light .nav-link,
+        body.theme-light .footer-link {
+            color: var(--light);
+        }
+
+        body.theme-light .nav-link:hover,
+        body.theme-light .footer-link:hover {
+            color: var(--secondary);
+        }
+
+        body.theme-light .hero-title {
+            background: linear-gradient(135deg, var(--light) 0%, var(--primary) 50%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        body.theme-light .section-title,
+        body.theme-light .about-text h3,
+        body.theme-light .project-title,
+        body.theme-light .contact-info h3 {
+            color: var(--light);
+        }
+
+        body.theme-light .hero-description,
+        body.theme-light .about-text p,
+        body.theme-light .project-description,
+        body.theme-light .contact-info p {
+            color: rgba(0, 1, 0, 0.8);
+        }
+
+        body.theme-light .section-subtitle {
+            color: var(--gray);
+        }
+
+        body.theme-light .btn-secondary {
+            color: var(--light);
+            border: 2px solid var(--primary);
+        }
+
+        body.theme-light .btn-secondary:hover {
+            color: white;
+        }
+
+        body.theme-light .copyright {
+            color: rgba(0, 1, 0, 0.5);
+        }
+
+        body.theme-light .typewriter-cursor {
+            background-color: var(--primary);
         }
 
         body.theme-dark {
@@ -1026,6 +1099,12 @@
             .hero-badge {
                 margin-top: 1rem;
             }
+
+            /* Fix light theme on mobile */
+            body.theme-light .nav-links {
+                background: rgba(248, 249, 250, 0.98);
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+            }
         }
 
         @media (max-width: 480px) {
@@ -1083,7 +1162,7 @@
                     <a href="#about" class="nav-link" data-translate="nav_about">About</a>
                     <a href="#projects" class="nav-link" data-translate="nav_projects">Projects</a>
                     <a href="#contact" class="nav-link" data-translate="nav_contact">Contact</a>
-                    <a href="https://globalygenius.github.io/Text-Editor/" class="nav-link" data-translate="nav_text_editor">Text-Editor</a>
+                    <a href="https://globalygenius.github.io/Text-Editor/" class="nav-link">Text Editor</a>
                     
                     <!-- Language Selector -->
                     <div class="language-selector">
@@ -1136,8 +1215,9 @@
                 
                 <h1 class="hero-title">Globaly Genius</h1>
                 <p class="hero-subtitle" data-translate="hero_subtitle">Belarusian AI-enthusiast</p>
-                <p class="hero-description" data-translate="hero_description">
-                    Creating innovative projects at the intersection of artificial intelligence and modern technologies. Exploring new horizons in machine learning and sharing knowledge with the community.
+                <p class="hero-description">
+                    <span id="typewriter-text" class="typewriter-text"></span>
+                    <span class="typewriter-cursor"></span>
                 </p>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary" data-translate="hero_btn_projects">My Projects</a>
@@ -1199,7 +1279,7 @@
                     </p>
                     
                     <p data-translate="about_para3">
-                        My Text-Editor embodies this philosophy: a minimalist yet powerful tool
+                        My Text Editor embodies this philosophy: a minimalist yet powerful tool
                         that helps developers focus on what matters most - the code.
                     </p>
                     
@@ -1209,7 +1289,7 @@
                     </div>
                     
                     <a href="https://globalygenius.github.io/Text-Editor/" class="btn btn-primary">
-                        🚀 <span data-translate="btn_try_text_editor">Try Text-Editor</span>
+                        🚀 Try Text Editor
                     </a>
                 </div>
             </div>
@@ -1233,7 +1313,7 @@
                         <span>📝</span>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title" data-translate="project1_title">Text-Editor</h3>
+                        <h3 class="project-title">Text Editor</h3>
                         <p class="project-description" data-translate="project1_description">
                             Advanced text editor with syntax highlighting, cloud saving and intelligent features for productive coding.
                         </p>
@@ -1344,7 +1424,7 @@
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title">
-                <span data-translate="contact_title">Contact</span> <span class="section-accent" data-translate="contact_title_me">Me</span>
+                <span data-translate="contact_title">Contact</span> <span class="section-accent">Me</span>
             </h2>
             <p class="section-subtitle" data-translate="contact_subtitle">
                 Ready for collaboration and new challenges
@@ -1390,17 +1470,17 @@
                     <form id="contactForm">
                         <div class="form-group">
                             <label for="name" data-translate="form_name">Your Name</label>
-                            <input type="text" id="name" required>
+                            <input type="text" id="name" required placeholder="John Doe">
                         </div>
                         
                         <div class="form-group">
                             <label for="email" data-translate="form_email">Email</label>
-                            <input type="email" id="email" required>
+                            <input type="email" id="email" required placeholder="john@example.com">
                         </div>
                         
                         <div class="form-group">
                             <label for="message" data-translate="form_message">Message</label>
-                            <textarea id="message" required placeholder="Tell me about your project..." data-translate="form_message_placeholder"></textarea>
+                            <textarea id="message" required placeholder="Tell me about your project..."></textarea>
                         </div>
                         
                         <button type="submit" class="btn btn-primary" style="width: 100%;">
@@ -1425,7 +1505,7 @@
                     <a href="#about" class="footer-link" data-translate="nav_about">About</a>
                     <a href="#projects" class="footer-link" data-translate="nav_projects">Projects</a>
                     <a href="#contact" class="footer-link" data-translate="nav_contact">Contact</a>
-                    <a href="https://globalygenius.github.io/Text-Editor/" class="footer-link" data-translate="nav_text_editor">Text-Editor</a>
+                    <a href="https://globalygenius.github.io/Text-Editor/" class="footer-link">Text Editor</a>
                 </div>
                 
                 <div class="social-links">
@@ -1468,7 +1548,6 @@
                 "nav_about": "About",
                 "nav_projects": "Projects",
                 "nav_contact": "Contact",
-                "nav_text_editor": "Text-Editor",
                 
                 // Language selector
                 "lang_en": "EN",
@@ -1479,7 +1558,6 @@
                 // Hero section
                 "hero_badge": "AI enthusiast from Belarus",
                 "hero_subtitle": "Belarusian AI-enthusiast",
-                "hero_description": "Creating innovative projects at the intersection of artificial intelligence and modern technologies. Exploring new horizons in machine learning and sharing knowledge with the community.",
                 "hero_btn_projects": "My Projects",
                 "hero_btn_contact": "Contact Me",
                 
@@ -1491,20 +1569,18 @@
                 "about_para1": "I specialize in creating intelligent systems and applications that solve complex problems. Each project is a carefully crafted solution that combines code elegance with the power of modern technologies.",
                 "about_heading2": "Development Philosophy",
                 "about_para2": "I believe in the power of open source and community. Every tool I create should be maximally useful, intuitive and accessible to everyone.",
-                "about_para3": "My Text-Editor embodies this philosophy: a minimalist yet powerful tool that helps developers focus on what matters most - the code.",
+                "about_para3": "My Text Editor embodies this philosophy: a minimalist yet powerful tool that helps developers focus on what matters most - the code.",
                 "skill_ai": "Artificial Intelligence",
                 "skill_web": "Web Development",
                 "skill_tools": "Tools",
                 "skill_innovation": "Innovation",
                 "help_title": "Free Help for Passion Projects",
                 "help_description": "I provide free assistance exclusively for interesting non-commercial projects made with passion and soul. For commercial projects, please seek other specialists.",
-                "btn_try_text_editor": "Try Text-Editor",
                 
                 // Projects section
                 "projects_title": "My",
                 "projects_title_projects": "Projects",
                 "projects_subtitle": "Innovative solutions and community contributions",
-                "project1_title": "Text-Editor",
                 "project1_description": "Advanced text editor with syntax highlighting, cloud saving and intelligent features for productive coding.",
                 "project2_title": "Code-Playground",
                 "project2_description": "Interactive coding environment with live preview, multiple language support and collaborative features.",
@@ -1518,7 +1594,6 @@
                 
                 // Contact section
                 "contact_title": "Contact",
-                "contact_title_me": "Me",
                 "contact_subtitle": "Ready for collaboration and new challenges",
                 "contact_heading": "Let's create the future together",
                 "contact_description": "Always open to interesting projects, collaborations and discussions of new ideas. If you have a vision - let's bring it to life.",
@@ -1529,7 +1604,6 @@
                 "form_name": "Your Name",
                 "form_email": "Email",
                 "form_message": "Message",
-                "form_message_placeholder": "Tell me about your project...",
                 "form_submit": "Send Message",
                 
                 // Footer
@@ -1541,7 +1615,6 @@
                 "nav_about": "Обо мне",
                 "nav_projects": "Проекты",
                 "nav_contact": "Контакты",
-                "nav_text_editor": "Текст-Редактор",
                 
                 // Language selector
                 "lang_en": "АНГ",
@@ -1552,7 +1625,6 @@
                 // Hero section
                 "hero_badge": "AI энтузиаст из Беларуси",
                 "hero_subtitle": "Белорусский AI-энтузиаст",
-                "hero_description": "Создаю инновационные проекты на стыке искусственного интеллекта и современных технологий. Исследую новые горизонты в машинном обучении и делюсь знаниями с сообществом.",
                 "hero_btn_projects": "Мои Проекты",
                 "hero_btn_contact": "Связаться",
                 
@@ -1564,20 +1636,18 @@
                 "about_para1": "Я специализируюсь на создании интеллектуальных систем и приложений, решающих сложные проблемы. Каждый проект - это тщательно продуманное решение, сочетающее элегантность кода с мощью современных технологий.",
                 "about_heading2": "Философия разработки",
                 "about_para2": "Я верю в силу открытого исходного кода и сообщества. Каждый созданный мной инструмент должен быть максимально полезным, интуитивно понятным и доступным для всех.",
-                "about_para3": "Мой Текст-Редактор воплощает эту философию: минималистичный, но мощный инструмент, который помогает разработчикам сосредоточиться на самом важном - коде.",
+                "about_para3": "Мой Text Editor воплощает эту философию: минималистичный, но мощный инструмент, который помогает разработчикам сосредоточиться на самом важном - коде.",
                 "skill_ai": "Искусственный интеллект",
                 "skill_web": "Веб-разработка",
                 "skill_tools": "Инструменты",
                 "skill_innovation": "Инновации",
                 "help_title": "Бесплатная помощь для проектов по душе",
                 "help_description": "Я предоставляю бесплатную помощь исключительно для интересных некоммерческих проектов, созданных с душой и страстью. Для коммерческих проектов, пожалуйста, обращайтесь к другим специалистам.",
-                "btn_try_text_editor": "Попробовать Текст-Редактор",
                 
                 // Projects section
                 "projects_title": "Мои",
                 "projects_title_projects": "Проекты",
                 "projects_subtitle": "Инновационные решения и вклад в сообщество",
-                "project1_title": "Текст-Редактор",
                 "project1_description": "Продвинутый текстовый редактор с подсветкой синтаксиса, облачным сохранением и интеллектуальными функциями для продуктивного кодинга.",
                 "project2_title": "Code-Playground",
                 "project2_description": "Интерактивная среда для программирования с живым предпросмотром, поддержкой нескольких языков и функциями совместной работы.",
@@ -1591,7 +1661,6 @@
                 
                 // Contact section
                 "contact_title": "Контакты",
-                "contact_title_me": "",
                 "contact_subtitle": "Готов к сотрудничеству и новым вызовам",
                 "contact_heading": "Давайте создадим будущее вместе",
                 "contact_description": "Всегда открыт для интересных проектов, сотрудничества и обсуждения новых идей. Если у вас есть видение - давайте воплотим его в жизнь.",
@@ -1602,7 +1671,6 @@
                 "form_name": "Ваше имя",
                 "form_email": "Email",
                 "form_message": "Сообщение",
-                "form_message_placeholder": "Расскажите мне о вашем проекте...",
                 "form_submit": "Отправить сообщение",
                 
                 // Footer
@@ -1614,7 +1682,6 @@
                 "nav_about": "Пра мяне",
                 "nav_projects": "Праекты",
                 "nav_contact": "Кантакты",
-                "nav_text_editor": "Тэкст-Рэдактар",
                 
                 // Language selector
                 "lang_en": "АНГ",
@@ -1625,7 +1692,6 @@
                 // Hero section
                 "hero_badge": "AI энтузіяст з Беларусі",
                 "hero_subtitle": "Беларускі AI-энтузіяст",
-                "hero_description": "Ствараю інавацыйныя праекты на стыку штучнага інтэлекту і сучасных тэхналогій. Дасьледую новыя гарызонты ў машынным навучаньні і дзялюся ведамі з супольнасьцю.",
                 "hero_btn_projects": "Мае Праекты",
                 "hero_btn_contact": "Звязацца",
                 
@@ -1637,20 +1703,18 @@
                 "about_para1": "Я спэцыялізуюся на стварэньні інтэлектуальных сыстэмаў і праграмаў, якія вырашаюць складаныя праблемы. Кожны праект - гэта старанна прадуманае рашэньне, якое спалучае элегантнасьць коду з магутнасьцю сучасных тэхналогій.",
                 "about_heading2": "Філязофія распрацоўкі",
                 "about_para2": "Я веру ў сілу адкрытага зыходнага коду і супольнасьці. Кожны інструмэнт, які я ствараю, павінен быць максымальна карысным, інтуітыўным і даступным для ўсіх.",
-                "about_para3": "Мой Тэкст-Рэдактар увасабляе гэтую філязофію: мінімалістычны, але магутны інструмэнт, які дапамагае распрацоўшчыкам засяродзіцца на самым важным - кодзе.",
+                "about_para3": "Мой Text Editor увасабляе гэтую філязофію: мінімалістычны, але магутны інструмэнт, які дапамагае распрацоўшчыкам засяродзіцца на самым важным - кодзе.",
                 "skill_ai": "Штучны інтэлект",
                 "skill_web": "Вэб-распрацоўка",
                 "skill_tools": "Інструмэнты",
                 "skill_innovation": "Інавацыі",
                 "help_title": "Бясплатная дапамога для праектаў па душы",
                 "help_description": "Я прадастаўляю бясплатную дапамогу выключна для цікавых некамэрцыйных праектаў, створаных з душой і запалам. Для камэрцыйных праектаў, калі ласка, зьвяртайцеся да іншых спэцыялістаў.",
-                "btn_try_text_editor": "Паспрабаваць Тэкст-Рэдактар",
                 
                 // Projects section
                 "projects_title": "Мае",
                 "projects_title_projects": "Праекты",
                 "projects_subtitle": "Інавацыйныя рашэньні і ўклад у супольнасьць",
-                "project1_title": "Тэкст-Рэдактар",
                 "project1_description": "Палепшаны тэкставы рэдактар з падсьветкай сынтаксісу, воблачным захаваньнем і інтэлектуальнымі функцыямі для прадуктыўнага кадаваньня.",
                 "project2_title": "Code-Playground",
                 "project2_description": "Інтэрактыўнае асяродзьдзе для праграмаваньня з жывым прадпраглядам, падтрымкай некалькіх моваў і функцыямі сумеснай працы.",
@@ -1664,7 +1728,6 @@
                 
                 // Contact section
                 "contact_title": "Кантакты",
-                "contact_title_me": "",
                 "contact_subtitle": "Гатовы да супрацоўніцтва і новых выклікаў",
                 "contact_heading": "Давайце стварым будучыню разам",
                 "contact_description": "Заўсёды адкрыты для цікавых праектаў, супрацоўніцтва і абмеркаваньня новых ідэй. Калі ў вас ёсьць бачаньне - давайце ажывім яго.",
@@ -1675,13 +1738,78 @@
                 "form_name": "Ваша імя",
                 "form_email": "Email",
                 "form_message": "Паведамленьне",
-                "form_message_placeholder": "Раскажыце мне пра ваш праект...",
                 "form_submit": "Адправіць паведамленьне",
                 
                 // Footer
                 "footer_copyright": "Беларускі AI-энтузіяст. Усе правы абаронены.",
                 "footer_made_with": "Зроблена з ❤️ і 🦄 магіяй"
             }
+        };
+
+        // Typewriter effect
+        class Typewriter {
+            constructor(element, texts, speed = 50, pause = 2000) {
+                this.element = element;
+                this.texts = texts;
+                this.speed = speed;
+                this.pause = pause;
+                this.textIndex = 0;
+                this.charIndex = 0;
+                this.currentText = '';
+                this.isDeleting = false;
+                this.type();
+            }
+
+            type() {
+                const current = this.textIndex % this.texts.length;
+                const fullText = this.texts[current];
+
+                if (this.isDeleting) {
+                    this.currentText = fullText.substring(0, this.charIndex - 1);
+                    this.charIndex--;
+                } else {
+                    this.currentText = fullText.substring(0, this.charIndex + 1);
+                    this.charIndex++;
+                }
+
+                this.element.innerHTML = this.currentText;
+
+                let typeSpeed = this.speed;
+
+                if (this.isDeleting) {
+                    typeSpeed /= 2;
+                }
+
+                if (!this.isDeleting && this.charIndex === fullText.length) {
+                    typeSpeed = this.pause;
+                    this.isDeleting = true;
+                } else if (this.isDeleting && this.charIndex === 0) {
+                    this.isDeleting = false;
+                    this.textIndex++;
+                    typeSpeed = 500;
+                }
+
+                setTimeout(() => this.type(), typeSpeed);
+            }
+        }
+
+        // Typewriter texts in different languages
+        const typewriterTexts = {
+            en: [
+                "Creating innovative projects at the intersection of artificial intelligence and modern technologies.",
+                "Exploring new horizons in machine learning and sharing knowledge with the community.",
+                "Building intelligent solutions that make technology accessible to everyone."
+            ],
+            ru: [
+                "Создаю инновационные проекты на стыке искусственного интеллекта и современных технологий.",
+                "Исследую новые горизонты в машинном обучении и делюсь знаниями с сообществом.",
+                "Строю интеллектуальные решения, делающие технологии доступными для всех."
+            ],
+            be: [
+                "Ствараю інавацыйныя праекты на стыку штучнага інтэлекту і сучасных тэхналогій.",
+                "Дасьледую новыя гарызонты ў машынным навучаньні і дзялюся ведамі з супольнасьцю.",
+                "Буду інтэлектуальныя рашэньні, якія робяць тэхналогіі даступнымі для ўсіх."
+            ]
         };
 
         // Mobile Navigation Toggle
@@ -1776,8 +1904,39 @@
                 
                 // Apply translation
                 applyTranslation(lang);
+                
+                // Update URL for language routing
+                updateLanguageURL(lang);
+                
+                // Restart typewriter with new language
+                startTypewriter(lang);
             });
         });
+        
+        // Function to update URL for language routing
+        function updateLanguageURL(lang) {
+            const currentPath = window.location.pathname;
+            const basePath = window.location.origin;
+            
+            // Remove existing language path
+            let newPath = currentPath.replace(/^\/(en|ru|be)/, '');
+            if (newPath === '') newPath = '/';
+            
+            // Add new language path if not English (default)
+            if (lang !== 'en') {
+                newPath = `/${lang}${newPath}`;
+            }
+            
+            // Update URL without page reload
+            window.history.replaceState({}, '', basePath + newPath);
+        }
+        
+        // Function to detect language from URL
+        function detectLanguageFromURL() {
+            const path = window.location.pathname;
+            const langMatch = path.match(/^\/(en|ru|be)/);
+            return langMatch ? langMatch[1] : 'en';
+        }
         
         // Translation function
         function applyTranslation(lang) {
@@ -1790,13 +1949,25 @@
             });
             
             // Update placeholders
-            const placeholders = document.querySelectorAll('[data-translate][placeholder]');
+            const placeholders = document.querySelectorAll('input[placeholder], textarea[placeholder]');
             placeholders.forEach(element => {
                 const key = element.getAttribute('data-translate');
                 if (translations[lang] && translations[lang][key]) {
                     element.setAttribute('placeholder', translations[lang][key]);
                 }
             });
+        }
+        
+        // Start typewriter effect
+        function startTypewriter(lang) {
+            const typewriterElement = document.getElementById('typewriter-text');
+            typewriterElement.innerHTML = '';
+            
+            if (window.typewriter) {
+                window.typewriter = null;
+            }
+            
+            window.typewriter = new Typewriter(typewriterElement, typewriterTexts[lang], 50, 2000);
         }
         
         // Form submission
@@ -1853,11 +2024,26 @@
         
         // Initialize when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
-            // Add loaded class to body for fade-in effect
-            document.body.classList.add('loaded');
-            
             // Set current year in copyright
             document.querySelector('.copyright').innerHTML = document.querySelector('.copyright').innerHTML.replace('2024', new Date().getFullYear());
+            
+            // Auto-detect language from URL or browser
+            const urlLang = detectLanguageFromURL();
+            const browserLang = navigator.language.split('-')[0];
+            const savedLanguage = localStorage.getItem('language') || urlLang || (['en', 'ru', 'be'].includes(browserLang) ? browserLang : 'en');
+            
+            // Apply language
+            const languageOption = document.querySelector(`.language-option[data-lang="${savedLanguage}"]`);
+            if (languageOption) {
+                const flag = languageOption.querySelector('.language-flag').textContent;
+                const text = languageOption.textContent.trim();
+                languageToggle.innerHTML = `${flag} ${text.split(' ')[0]}`;
+                applyTranslation(savedLanguage);
+                updateLanguageURL(savedLanguage);
+                
+                // Start typewriter effect
+                startTypewriter(savedLanguage);
+            }
             
             // Load saved theme
             const savedTheme = localStorage.getItem('theme') || 'dark';
@@ -1868,53 +2054,19 @@
                 themeToggle.setAttribute('aria-label', 'Switch to dark theme');
             }
             
-            // Load saved language
-            const savedLanguage = localStorage.getItem('language') || 'en';
-            const languageOption = document.querySelector(`.language-option[data-lang="${savedLanguage}"]`);
-            if (languageOption) {
-                const flag = languageOption.querySelector('.language-flag').textContent;
-                const text = languageOption.textContent.trim();
-                languageToggle.innerHTML = `${flag} ${text.split(' ')[0]}`;
-                applyTranslation(savedLanguage);
-            }
+            // Performance optimization: Preload critical resources
+            const criticalResources = [
+                'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap'
+            ];
             
-            // Performance optimization: Lazy load images
-            if ('IntersectionObserver' in window) {
-                const imageObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const img = entry.target;
-                            img.src = img.dataset.src;
-                            img.classList.remove('lazy');
-                            imageObserver.unobserve(img);
-                        }
-                    });
-                });
-                
-                document.querySelectorAll('img[data-src]').forEach(img => {
-                    imageObserver.observe(img);
-                });
-            }
-        });
-        
-        // Track page views for analytics (placeholder)
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID'); // Replace with actual GA ID
-        
-        // Service Worker registration for PWA capabilities
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(registration => {
-                        console.log('SW registered: ', registration);
-                    })
-                    .catch(registrationError => {
-                        console.log('SW registration failed: ', registrationError);
-                    });
+            criticalResources.forEach(resource => {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.href = resource;
+                link.as = 'style';
+                document.head.appendChild(link);
             });
-        }
+        });
     </script>
 </body>
 </html>
