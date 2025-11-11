@@ -304,6 +304,7 @@
             position: relative;
             overflow: hidden;
             background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 50%, rgba(138, 43, 226, 0.1) 100%);
+            padding-top: var(--header-height);
         }
 
         .hero::before {
@@ -544,7 +545,7 @@
             border: 1px solid rgba(255, 107, 107, 0.3);
             border-radius: var(--border-radius);
             padding: 1.5rem;
-            margin-top: 2rem;
+            margin-top: 3rem;
             backdrop-filter: blur(10px);
         }
 
@@ -855,6 +856,15 @@
             --dark-gray: #343a40;
         }
 
+        body.theme-light header {
+            background: rgba(248, 249, 250, 0.95);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        body.theme-light .header-scrolled {
+            background: rgba(248, 249, 250, 0.98);
+        }
+
         body.theme-light .hero {
             background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 50%, rgba(138, 43, 226, 0.1) 100%);
         }
@@ -1012,6 +1022,10 @@
                 right: auto;
                 left: 0;
             }
+
+            .hero-badge {
+                margin-top: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1045,6 +1059,10 @@
                 padding: 0.5rem 0.75rem;
                 font-size: 0.9rem;
             }
+
+            .help-notice {
+                margin-top: 2rem;
+            }
         }
     </style>
 </head>
@@ -1062,29 +1080,29 @@
                 </a>
                 
                 <nav class="nav-links" id="navLinks">
-                    <a href="#about" class="nav-link">About</a>
-                    <a href="#projects" class="nav-link">Projects</a>
-                    <a href="#contact" class="nav-link">Contact</a>
-                    <a href="https://globalygenius.github.io/Text-Editor/" class="nav-link">Text-Editor</a>
+                    <a href="#about" class="nav-link" data-translate="nav_about">About</a>
+                    <a href="#projects" class="nav-link" data-translate="nav_projects">Projects</a>
+                    <a href="#contact" class="nav-link" data-translate="nav_contact">Contact</a>
+                    <a href="https://globalygenius.github.io/Text-Editor/" class="nav-link" data-translate="nav_text_editor">Text-Editor</a>
                     
                     <!-- Language Selector -->
                     <div class="language-selector">
                         <button class="language-toggle" id="languageToggle">
                             <span class="language-flag">🌐</span>
-                            <span>EN</span>
+                            <span data-translate="lang_en">EN</span>
                         </button>
                         <div class="language-dropdown" id="languageDropdown">
                             <a href="#" class="language-option" data-lang="en">
                                 <span class="language-flag">🇺🇸</span>
-                                <span>English</span>
+                                <span data-translate="lang_en_full">English</span>
                             </a>
                             <a href="#" class="language-option" data-lang="ru">
                                 <span class="language-flag">🇷🇺</span>
-                                <span>Русский</span>
+                                <span data-translate="lang_ru_full">Русский</span>
                             </a>
                             <a href="#" class="language-option" data-lang="be">
                                 <span class="language-flag">🇧🇾</span>
-                                <span>Беларуская</span>
+                                <span data-translate="lang_be_full">Беларуская</span>
                             </a>
                         </div>
                     </div>
@@ -1113,17 +1131,17 @@
             <div class="hero-content">
                 <div class="hero-badge">
                     <span>🚀</span>
-                    <span>AI enthusiast from Belarus</span>
+                    <span data-translate="hero_badge">AI enthusiast from Belarus</span>
                 </div>
                 
                 <h1 class="hero-title">Globaly Genius</h1>
-                <p class="hero-subtitle">Belarusian AI-enthusiast</p>
-                <p class="hero-description">
+                <p class="hero-subtitle" data-translate="hero_subtitle">Belarusian AI-enthusiast</p>
+                <p class="hero-description" data-translate="hero_description">
                     Creating innovative projects at the intersection of artificial intelligence and modern technologies. Exploring new horizons in machine learning and sharing knowledge with the community.
                 </p>
                 <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">My Projects</a>
-                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    <a href="#projects" class="btn btn-primary" data-translate="hero_btn_projects">My Projects</a>
+                    <a href="#contact" class="btn btn-secondary" data-translate="hero_btn_contact">Contact Me</a>
                 </div>
             </div>
         </div>
@@ -1137,17 +1155,17 @@
     <section id="about" class="section">
         <div class="container">
             <h2 class="section-title">
-                <span>About</span> <span class="section-accent">Me</span>
+                <span data-translate="about_title">About</span> <span class="section-accent" data-translate="about_title_me">Me</span>
             </h2>
-            <p class="section-subtitle">
+            <p class="section-subtitle" data-translate="about_subtitle">
                 Dive into the world of innovation and technology
             </p>
             
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Turning ideas into digital reality</h3>
+                    <h3 data-translate="about_heading1">Turning ideas into digital reality</h3>
                     
-                    <p>
+                    <p data-translate="about_para1">
                         I specialize in creating intelligent systems and applications that solve complex problems.
                         Each project is a carefully crafted solution that combines code elegance with the power of modern technologies.
                     </p>
@@ -1155,43 +1173,43 @@
                     <div class="skills-grid">
                         <div class="skill-item">
                             <span class="skill-icon">🤖</span>
-                            <div>Artificial Intelligence</div>
+                            <div data-translate="skill_ai">Artificial Intelligence</div>
                         </div>
                         <div class="skill-item">
                             <span class="skill-icon">💻</span>
-                            <div>Web Development</div>
+                            <div data-translate="skill_web">Web Development</div>
                         </div>
                         <div class="skill-item">
                             <span class="skill-icon">🔧</span>
-                            <div>Tools</div>
+                            <div data-translate="skill_tools">Tools</div>
                         </div>
                         <div class="skill-item">
                             <span class="skill-icon">🚀</span>
-                            <div>Innovation</div>
+                            <div data-translate="skill_innovation">Innovation</div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="about-text">
-                    <h3>Development Philosophy</h3>
+                    <h3 data-translate="about_heading2">Development Philosophy</h3>
                     
-                    <p>
+                    <p data-translate="about_para2">
                         I believe in the power of open source and community. Every tool I create should be
                         maximally useful, intuitive and accessible to everyone.
                     </p>
                     
-                    <p>
+                    <p data-translate="about_para3">
                         My Text-Editor embodies this philosophy: a minimalist yet powerful tool
                         that helps developers focus on what matters most - the code.
                     </p>
                     
                     <div class="help-notice">
-                        <h4>💝 Free Help for Passion Projects</h4>
-                        <p>I provide free assistance exclusively for interesting non-commercial projects made with passion and soul. For commercial projects, please seek other specialists.</p>
+                        <h4>💝 <span data-translate="help_title">Free Help for Passion Projects</span></h4>
+                        <p data-translate="help_description">I provide free assistance exclusively for interesting non-commercial projects made with passion and soul. For commercial projects, please seek other specialists.</p>
                     </div>
                     
                     <a href="https://globalygenius.github.io/Text-Editor/" class="btn btn-primary">
-                        🚀 Try Text-Editor
+                        🚀 <span data-translate="btn_try_text_editor">Try Text-Editor</span>
                     </a>
                 </div>
             </div>
@@ -1202,9 +1220,9 @@
     <section id="projects" class="section projects-section">
         <div class="container">
             <h2 class="section-title">
-                <span>My</span> <span class="section-accent">Projects</span>
+                <span data-translate="projects_title">My</span> <span class="section-accent" data-translate="projects_title_projects">Projects</span>
             </h2>
-            <p class="section-subtitle">
+            <p class="section-subtitle" data-translate="projects_subtitle">
                 Innovative solutions and community contributions
             </p>
             
@@ -1215,8 +1233,8 @@
                         <span>📝</span>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Text-Editor</h3>
-                        <p class="project-description">
+                        <h3 class="project-title" data-translate="project1_title">Text-Editor</h3>
+                        <p class="project-description" data-translate="project1_description">
                             Advanced text editor with syntax highlighting, cloud saving and intelligent features for productive coding.
                         </p>
                         <div class="project-tags">
@@ -1226,7 +1244,7 @@
                             <span class="project-tag">Cloud</span>
                         </div>
                         <a href="https://globalygenius.github.io/Text-Editor/" class="project-link">
-                            Explore Project →
+                            <span data-translate="project_link">Explore Project</span> →
                         </a>
                     </div>
                 </div>
@@ -1237,8 +1255,8 @@
                         <span>💻</span>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Code-Playground</h3>
-                        <p class="project-description">
+                        <h3 class="project-title" data-translate="project2_title">Code-Playground</h3>
+                        <p class="project-description" data-translate="project2_description">
                             Interactive coding environment with live preview, multiple language support and collaborative features.
                         </p>
                         <div class="project-tags">
@@ -1248,7 +1266,7 @@
                             <span class="project-tag">Real-time</span>
                         </div>
                         <a href="https://globalygenius.github.io/Code-Playground/" class="project-link">
-                            Explore Project →
+                            <span data-translate="project_link">Explore Project</span> →
                         </a>
                     </div>
                 </div>
@@ -1259,8 +1277,8 @@
                         <span>🤖</span>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">AI-Chat</h3>
-                        <p class="project-description">
+                        <h3 class="project-title" data-translate="project3_title">AI-Chat</h3>
+                        <p class="project-description" data-translate="project3_description">
                             Intelligent chatbot with natural language processing, context awareness and multiple AI model integrations.
                         </p>
                         <div class="project-tags">
@@ -1270,7 +1288,7 @@
                             <span class="project-tag">API</span>
                         </div>
                         <a href="https://globalygenius.github.io/AI-Chat/" class="project-link">
-                            Explore Project →
+                            <span data-translate="project_link">Explore Project</span> →
                         </a>
                     </div>
                 </div>
@@ -1281,8 +1299,8 @@
                         <span>🎨</span>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">SVG-Icons</h3>
-                        <p class="project-description">
+                        <h3 class="project-title" data-translate="project4_title">SVG-Icons</h3>
+                        <p class="project-description" data-translate="project4_description">
                             Comprehensive SVG icon library with customizable colors, sizes and animations for modern web applications.
                         </p>
                         <div class="project-tags">
@@ -1292,7 +1310,7 @@
                             <span class="project-tag">Design</span>
                         </div>
                         <a href="https://globalygenius.github.io/SVG-Icons/" class="project-link">
-                            Explore Project →
+                            <span data-translate="project_link">Explore Project</span> →
                         </a>
                     </div>
                 </div>
@@ -1303,8 +1321,8 @@
                         <span>😊</span>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Discord-UI-Emojipack</h3>
-                        <p class="project-description">
+                        <h3 class="project-title" data-translate="project5_title">Discord-UI-Emojipack</h3>
+                        <p class="project-description" data-translate="project5_description">
                             Custom Discord emoji pack with unique designs, animated variants and easy integration for community servers.
                         </p>
                         <div class="project-tags">
@@ -1314,7 +1332,7 @@
                             <span class="project-tag">Discord</span>
                         </div>
                         <a href="https://globalygenius.github.io/Discord-UI-Emojipack/" class="project-link">
-                            Explore Project →
+                            <span data-translate="project_link">Explore Project</span> →
                         </a>
                     </div>
                 </div>
@@ -1326,17 +1344,17 @@
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title">
-                <span>Contact</span> <span class="section-accent">Me</span>
+                <span data-translate="contact_title">Contact</span> <span class="section-accent" data-translate="contact_title_me">Me</span>
             </h2>
-            <p class="section-subtitle">
+            <p class="section-subtitle" data-translate="contact_subtitle">
                 Ready for collaboration and new challenges
             </p>
             
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>Let's create the future together</h3>
+                    <h3 data-translate="contact_heading">Let's create the future together</h3>
                     
-                    <p>
+                    <p data-translate="contact_description">
                         Always open to interesting projects, collaborations and discussions of new ideas.
                         If you have a vision - let's bring it to life.
                     </p>
@@ -1345,7 +1363,7 @@
                         <div class="contact-item">
                             <div class="contact-icon">📧</div>
                             <div>
-                                <strong>Email</strong><br>
+                                <strong data-translate="contact_email">Email</strong><br>
                                 <a href="mailto:globalygenius@example.com">globalygenius@example.com</a>
                             </div>
                         </div>
@@ -1353,7 +1371,7 @@
                         <div class="contact-item">
                             <div class="contact-icon">🐙</div>
                             <div>
-                                <strong>GitHub</strong><br>
+                                <strong data-translate="contact_github">GitHub</strong><br>
                                 <a href="https://github.com/globalygenius">github.com/globalygenius</a>
                             </div>
                         </div>
@@ -1361,8 +1379,8 @@
                         <div class="contact-item">
                             <div class="contact-icon">📍</div>
                             <div>
-                                <strong>Location</strong><br>
-                                <span>Belarus, World</span>
+                                <strong data-translate="contact_location">Location</strong><br>
+                                <span data-translate="contact_location_value">Belarus, World</span>
                             </div>
                         </div>
                     </div>
@@ -1371,22 +1389,22 @@
                 <div class="contact-form">
                     <form id="contactForm">
                         <div class="form-group">
-                            <label for="name">Your Name</label>
+                            <label for="name" data-translate="form_name">Your Name</label>
                             <input type="text" id="name" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email" data-translate="form_email">Email</label>
                             <input type="email" id="email" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" required placeholder="Tell me about your project..."></textarea>
+                            <label for="message" data-translate="form_message">Message</label>
+                            <textarea id="message" required placeholder="Tell me about your project..." data-translate="form_message_placeholder"></textarea>
                         </div>
                         
                         <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            📨 Send Message
+                            📨 <span data-translate="form_submit">Send Message</span>
                         </button>
                     </form>
                 </div>
@@ -1404,10 +1422,10 @@
                 </div>
                 
                 <div class="footer-links">
-                    <a href="#about" class="footer-link">About</a>
-                    <a href="#projects" class="footer-link">Projects</a>
-                    <a href="#contact" class="footer-link">Contact</a>
-                    <a href="https://globalygenius.github.io/Text-Editor/" class="footer-link">Text-Editor</a>
+                    <a href="#about" class="footer-link" data-translate="nav_about">About</a>
+                    <a href="#projects" class="footer-link" data-translate="nav_projects">Projects</a>
+                    <a href="#contact" class="footer-link" data-translate="nav_contact">Contact</a>
+                    <a href="https://globalygenius.github.io/Text-Editor/" class="footer-link" data-translate="nav_text_editor">Text-Editor</a>
                 </div>
                 
                 <div class="social-links">
@@ -1435,13 +1453,237 @@
                 </div>
                 
                 <p class="copyright">
-                    © 2024 Globaly Genius — Belarusian AI-enthusiast. All rights reserved.
+                    © 2024 Globaly Genius — <span data-translate="footer_copyright">Belarusian AI-enthusiast. All rights reserved.</span><br>
+                    <span data-translate="footer_made_with">Made with ❤️ and 🦄 magic</span>
                 </p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Translation system
+        const translations = {
+            en: {
+                // Navigation
+                "nav_about": "About",
+                "nav_projects": "Projects",
+                "nav_contact": "Contact",
+                "nav_text_editor": "Text-Editor",
+                
+                // Language selector
+                "lang_en": "EN",
+                "lang_en_full": "English",
+                "lang_ru_full": "Russian",
+                "lang_be_full": "Belarusian",
+                
+                // Hero section
+                "hero_badge": "AI enthusiast from Belarus",
+                "hero_subtitle": "Belarusian AI-enthusiast",
+                "hero_description": "Creating innovative projects at the intersection of artificial intelligence and modern technologies. Exploring new horizons in machine learning and sharing knowledge with the community.",
+                "hero_btn_projects": "My Projects",
+                "hero_btn_contact": "Contact Me",
+                
+                // About section
+                "about_title": "About",
+                "about_title_me": "Me",
+                "about_subtitle": "Dive into the world of innovation and technology",
+                "about_heading1": "Turning ideas into digital reality",
+                "about_para1": "I specialize in creating intelligent systems and applications that solve complex problems. Each project is a carefully crafted solution that combines code elegance with the power of modern technologies.",
+                "about_heading2": "Development Philosophy",
+                "about_para2": "I believe in the power of open source and community. Every tool I create should be maximally useful, intuitive and accessible to everyone.",
+                "about_para3": "My Text-Editor embodies this philosophy: a minimalist yet powerful tool that helps developers focus on what matters most - the code.",
+                "skill_ai": "Artificial Intelligence",
+                "skill_web": "Web Development",
+                "skill_tools": "Tools",
+                "skill_innovation": "Innovation",
+                "help_title": "Free Help for Passion Projects",
+                "help_description": "I provide free assistance exclusively for interesting non-commercial projects made with passion and soul. For commercial projects, please seek other specialists.",
+                "btn_try_text_editor": "Try Text-Editor",
+                
+                // Projects section
+                "projects_title": "My",
+                "projects_title_projects": "Projects",
+                "projects_subtitle": "Innovative solutions and community contributions",
+                "project1_title": "Text-Editor",
+                "project1_description": "Advanced text editor with syntax highlighting, cloud saving and intelligent features for productive coding.",
+                "project2_title": "Code-Playground",
+                "project2_description": "Interactive coding environment with live preview, multiple language support and collaborative features.",
+                "project3_title": "AI-Chat",
+                "project3_description": "Intelligent chatbot with natural language processing, context awareness and multiple AI model integrations.",
+                "project4_title": "SVG-Icons",
+                "project4_description": "Comprehensive SVG icon library with customizable colors, sizes and animations for modern web applications.",
+                "project5_title": "Discord-UI-Emojipack",
+                "project5_description": "Custom Discord emoji pack with unique designs, animated variants and easy integration for community servers.",
+                "project_link": "Explore Project",
+                
+                // Contact section
+                "contact_title": "Contact",
+                "contact_title_me": "Me",
+                "contact_subtitle": "Ready for collaboration and new challenges",
+                "contact_heading": "Let's create the future together",
+                "contact_description": "Always open to interesting projects, collaborations and discussions of new ideas. If you have a vision - let's bring it to life.",
+                "contact_email": "Email",
+                "contact_github": "GitHub",
+                "contact_location": "Location",
+                "contact_location_value": "Belarus, World",
+                "form_name": "Your Name",
+                "form_email": "Email",
+                "form_message": "Message",
+                "form_message_placeholder": "Tell me about your project...",
+                "form_submit": "Send Message",
+                
+                // Footer
+                "footer_copyright": "Belarusian AI-enthusiast. All rights reserved.",
+                "footer_made_with": "Made with ❤️ and 🦄 magic"
+            },
+            ru: {
+                // Navigation
+                "nav_about": "Обо мне",
+                "nav_projects": "Проекты",
+                "nav_contact": "Контакты",
+                "nav_text_editor": "Текст-Редактор",
+                
+                // Language selector
+                "lang_en": "АНГ",
+                "lang_en_full": "Английский",
+                "lang_ru_full": "Русский",
+                "lang_be_full": "Беларуский",
+                
+                // Hero section
+                "hero_badge": "AI энтузиаст из Беларуси",
+                "hero_subtitle": "Белорусский AI-энтузиаст",
+                "hero_description": "Создаю инновационные проекты на стыке искусственного интеллекта и современных технологий. Исследую новые горизонты в машинном обучении и делюсь знаниями с сообществом.",
+                "hero_btn_projects": "Мои Проекты",
+                "hero_btn_contact": "Связаться",
+                
+                // About section
+                "about_title": "Обо",
+                "about_title_me": "мне",
+                "about_subtitle": "Погрузитесь в мир инноваций и технологий",
+                "about_heading1": "Превращаю идеи в цифровую реальность",
+                "about_para1": "Я специализируюсь на создании интеллектуальных систем и приложений, решающих сложные проблемы. Каждый проект - это тщательно продуманное решение, сочетающее элегантность кода с мощью современных технологий.",
+                "about_heading2": "Философия разработки",
+                "about_para2": "Я верю в силу открытого исходного кода и сообщества. Каждый созданный мной инструмент должен быть максимально полезным, интуитивно понятным и доступным для всех.",
+                "about_para3": "Мой Текст-Редактор воплощает эту философию: минималистичный, но мощный инструмент, который помогает разработчикам сосредоточиться на самом важном - коде.",
+                "skill_ai": "Искусственный интеллект",
+                "skill_web": "Веб-разработка",
+                "skill_tools": "Инструменты",
+                "skill_innovation": "Инновации",
+                "help_title": "Бесплатная помощь для проектов по душе",
+                "help_description": "Я предоставляю бесплатную помощь исключительно для интересных некоммерческих проектов, созданных с душой и страстью. Для коммерческих проектов, пожалуйста, обращайтесь к другим специалистам.",
+                "btn_try_text_editor": "Попробовать Текст-Редактор",
+                
+                // Projects section
+                "projects_title": "Мои",
+                "projects_title_projects": "Проекты",
+                "projects_subtitle": "Инновационные решения и вклад в сообщество",
+                "project1_title": "Текст-Редактор",
+                "project1_description": "Продвинутый текстовый редактор с подсветкой синтаксиса, облачным сохранением и интеллектуальными функциями для продуктивного кодинга.",
+                "project2_title": "Code-Playground",
+                "project2_description": "Интерактивная среда для программирования с живым предпросмотром, поддержкой нескольких языков и функциями совместной работы.",
+                "project3_title": "AI-Chat",
+                "project3_description": "Интеллектуальный чат-бот с обработкой естественного языка, контекстным осознанием и интеграцией нескольких моделей ИИ.",
+                "project4_title": "SVG-Icons",
+                "project4_description": "Комплексная библиотека SVG-иконок с настраиваемыми цветами, размерами и анимациями для современных веб-приложений.",
+                "project5_title": "Discord-UI-Emojipack",
+                "project5_description": "Пользовательский набор эмодзи для Discord с уникальным дизайном, анимированными вариантами и простой интеграцией для сообществ.",
+                "project_link": "Исследовать проект",
+                
+                // Contact section
+                "contact_title": "Контакты",
+                "contact_title_me": "",
+                "contact_subtitle": "Готов к сотрудничеству и новым вызовам",
+                "contact_heading": "Давайте создадим будущее вместе",
+                "contact_description": "Всегда открыт для интересных проектов, сотрудничества и обсуждения новых идей. Если у вас есть видение - давайте воплотим его в жизнь.",
+                "contact_email": "Email",
+                "contact_github": "GitHub",
+                "contact_location": "Местоположение",
+                "contact_location_value": "Беларусь, Мир",
+                "form_name": "Ваше имя",
+                "form_email": "Email",
+                "form_message": "Сообщение",
+                "form_message_placeholder": "Расскажите мне о вашем проекте...",
+                "form_submit": "Отправить сообщение",
+                
+                // Footer
+                "footer_copyright": "Белорусский AI-энтузиаст. Все права защищены.",
+                "footer_made_with": "Сделано с ❤️ и 🦄 магией"
+            },
+            be: {
+                // Navigation
+                "nav_about": "Пра мяне",
+                "nav_projects": "Праекты",
+                "nav_contact": "Кантакты",
+                "nav_text_editor": "Тэкст-Рэдактар",
+                
+                // Language selector
+                "lang_en": "АНГ",
+                "lang_en_full": "Англійская",
+                "lang_ru_full": "Русская",
+                "lang_be_full": "Беларуская",
+                
+                // Hero section
+                "hero_badge": "AI энтузіяст з Беларусі",
+                "hero_subtitle": "Беларускі AI-энтузіяст",
+                "hero_description": "Ствараю інавацыйныя праекты на стыку штучнага інтэлекту і сучасных тэхналогій. Дасьледую новыя гарызонты ў машынным навучаньні і дзялюся ведамі з супольнасьцю.",
+                "hero_btn_projects": "Мае Праекты",
+                "hero_btn_contact": "Звязацца",
+                
+                // About section
+                "about_title": "Пра",
+                "about_title_me": "мяне",
+                "about_subtitle": "Апусьціцеся ў сьвет інавацый і тэхналогій",
+                "about_heading1": "Ператвараю ідэі ў лічбавую рэальнасьць",
+                "about_para1": "Я спэцыялізуюся на стварэньні інтэлектуальных сыстэмаў і праграмаў, якія вырашаюць складаныя праблемы. Кожны праект - гэта старанна прадуманае рашэньне, якое спалучае элегантнасьць коду з магутнасьцю сучасных тэхналогій.",
+                "about_heading2": "Філязофія распрацоўкі",
+                "about_para2": "Я веру ў сілу адкрытага зыходнага коду і супольнасьці. Кожны інструмэнт, які я ствараю, павінен быць максымальна карысным, інтуітыўным і даступным для ўсіх.",
+                "about_para3": "Мой Тэкст-Рэдактар увасабляе гэтую філязофію: мінімалістычны, але магутны інструмэнт, які дапамагае распрацоўшчыкам засяродзіцца на самым важным - кодзе.",
+                "skill_ai": "Штучны інтэлект",
+                "skill_web": "Вэб-распрацоўка",
+                "skill_tools": "Інструмэнты",
+                "skill_innovation": "Інавацыі",
+                "help_title": "Бясплатная дапамога для праектаў па душы",
+                "help_description": "Я прадастаўляю бясплатную дапамогу выключна для цікавых некамэрцыйных праектаў, створаных з душой і запалам. Для камэрцыйных праектаў, калі ласка, зьвяртайцеся да іншых спэцыялістаў.",
+                "btn_try_text_editor": "Паспрабаваць Тэкст-Рэдактар",
+                
+                // Projects section
+                "projects_title": "Мае",
+                "projects_title_projects": "Праекты",
+                "projects_subtitle": "Інавацыйныя рашэньні і ўклад у супольнасьць",
+                "project1_title": "Тэкст-Рэдактар",
+                "project1_description": "Палепшаны тэкставы рэдактар з падсьветкай сынтаксісу, воблачным захаваньнем і інтэлектуальнымі функцыямі для прадуктыўнага кадаваньня.",
+                "project2_title": "Code-Playground",
+                "project2_description": "Інтэрактыўнае асяродзьдзе для праграмаваньня з жывым прадпраглядам, падтрымкай некалькіх моваў і функцыямі сумеснай працы.",
+                "project3_title": "AI-Chat",
+                "project3_description": "Інтэлектуальны чат-бот з апрацоўкай натуральнай мовы, кантэкстнай свядомасьцю і інтэграцыяй некалькіх мадэляў ШІ.",
+                "project4_title": "SVG-Icons",
+                "project4_description": "Комплексная бібліятэка SVG-іконак з наладжвальнымі колерамі, памерамі і анімацыямі для сучасных вэб-прыкладаньняў.",
+                "project5_title": "Discord-UI-Emojipack",
+                "project5_description": "Карыстальніцкі набор эмодзі для Discord з унікальным дызайнам, анімаванымі варыянтамі і простай інтэграцыяй для супольнасьцяў.",
+                "project_link": "Дасьледаваць праект",
+                
+                // Contact section
+                "contact_title": "Кантакты",
+                "contact_title_me": "",
+                "contact_subtitle": "Гатовы да супрацоўніцтва і новых выклікаў",
+                "contact_heading": "Давайце стварым будучыню разам",
+                "contact_description": "Заўсёды адкрыты для цікавых праектаў, супрацоўніцтва і абмеркаваньня новых ідэй. Калі ў вас ёсьць бачаньне - давайце ажывім яго.",
+                "contact_email": "Email",
+                "contact_github": "GitHub",
+                "contact_location": "Месцазнаходжаньне",
+                "contact_location_value": "Беларусь, Сьвет",
+                "form_name": "Ваша імя",
+                "form_email": "Email",
+                "form_message": "Паведамленьне",
+                "form_message_placeholder": "Раскажыце мне пра ваш праект...",
+                "form_submit": "Адправіць паведамленьне",
+                
+                // Footer
+                "footer_copyright": "Беларускі AI-энтузіяст. Усе правы абаронены.",
+                "footer_made_with": "Зроблена з ❤️ і 🦄 магіяй"
+            }
+        };
+
         // Mobile Navigation Toggle
         const navToggle = document.getElementById('navToggle');
         const navLinks = document.getElementById('navLinks');
@@ -1532,10 +1774,30 @@
                 // Save language preference
                 localStorage.setItem('language', lang);
                 
-                // Show confirmation (in a real implementation, this would change the actual content)
-                alert(`Language changed to ${text}. In a real implementation, this would translate the entire website.`);
+                // Apply translation
+                applyTranslation(lang);
             });
         });
+        
+        // Translation function
+        function applyTranslation(lang) {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Update placeholders
+            const placeholders = document.querySelectorAll('[data-translate][placeholder]');
+            placeholders.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.setAttribute('placeholder', translations[lang][key]);
+                }
+            });
+        }
         
         // Form submission
         const contactForm = document.getElementById('contactForm');
@@ -1613,6 +1875,7 @@
                 const flag = languageOption.querySelector('.language-flag').textContent;
                 const text = languageOption.textContent.trim();
                 languageToggle.innerHTML = `${flag} ${text.split(' ')[0]}`;
+                applyTranslation(savedLanguage);
             }
             
             // Performance optimization: Lazy load images
